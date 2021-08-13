@@ -1,0 +1,44 @@
+<robot>
+  <link name="velodyne_mount_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://lor01_jackal/meshes/VLP-Tower.STL"/>
+      </geometry>
+      <material name="dark_grey" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://lor01_jackal/meshes/VLP-Tower.STL"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="velodyne_mount_joint" type="fixed">
+    <parent link="mid_mount" />
+    <child link="velodyne_mount_link" />
+    <origin xyz="0 0 0.005" />
+  </joint>
+  
+  <link name="velodyne">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </link>
+  
+  <joint name="velodyne_sensor_joint" type="fixed">
+    <parent link="velodyne_mount_link" />
+    <child link="velodyne" />
+    <origin xyz="0 0 0.1603" />
+  </joint>
+
+  <link name="gx5_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </link>
+  
+  <joint name="microstrain_sensor_joint" type="fixed">
+    <parent link="rear_mount" />
+    <child link="gx5_link" />
+    <origin xyz="0 0 0.005" rpy="0 0 -1.570796"/>
+  </joint>
+
+</robot>
